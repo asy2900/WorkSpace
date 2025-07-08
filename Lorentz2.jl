@@ -91,22 +91,3 @@ function show_lorentz(x::Real, t::Real, β::Real)
     return nothing
 end
 
-
-#= Example usage
-function test_lorentz()
-    println("Testing Lorentz transformation with different scenarios:")
-    
-    # Test cases
-    test_cases = [
-        (2.0, 3.0, 0.5),   # Timelike interval
-        (4.0, 2.0, 0.3),   # Spacelike interval
-        (0.0, 5.0, 0.8),   # Time-only transformation
-        (3.0, 0.0, 0.6)    # Space-only transformation
-    ]
-    
-    for (i, (x, t, β)) in enumerate(test_cases)
-        println("\n" * "="^50)
-        println("Test case $i:")
-        demonstrate_lorentz(x, t, β)
-    end
-end =#
