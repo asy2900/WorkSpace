@@ -19,7 +19,7 @@ end
 
 function inverse_lorentz(x_prime::Real, t_prime::Real, β::Real)::Tuple{Float64, Float64}
    abs(β) < 1.0 || throw(ArgumentError("Absolute β must be less than 1"))
-   return lorentz(x_prime::Real, t_prime::Real, -β::Real)
+   return lorentz(x_prime, t_prime, -β)
 end
 
 function test_inverse_lorentz(x::Real, t::Real, β::Real)::Tuple{Float64, Float64, Real}
