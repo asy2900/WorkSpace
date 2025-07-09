@@ -22,13 +22,13 @@ function inverse_lorentz(x_prime::Real, t_prime::Real, β::Real)::Tuple{Float64,
    return lorentz(x_prime, t_prime, -β)
 end
 
-function test_inverse_lorentz(x::Real, t::Real, β::Real)::Tuple{Float64, Float64, Real}
+function test_inverse_lorentz(x::Real, t::Real, β::Real)
 
-# Or use the unified function
    (x_prime, t_prime) = lorentz(x, t, β)
+   println((round(x_prime;digits=6),round(t_prime;digits=6)))
    (x_back, t_back) = inverse_lorentz(x_prime, t_prime,  β)
    println((round(x_back;digits=6),round(t_back;digits=6),β))
-   return (x_back, t_back, β)
+   return nothing
 
 end
 
@@ -91,3 +91,22 @@ function show_lorentz(x::Real, t::Real, β::Real)
     return nothing
 end
 
+
+#= Example usage
+function test_lorentz()
+    println("Testing Lorentz transformation with different scenarios:")
+    
+    # Test cases
+    test_cases = [
+        (2.0, 3.0, 0.5),   # Timelike interval
+        (4.0, 2.0, 0.3),   # Spacelike interval
+        (0.0, 5.0, 0.8),   # Time-only transformation
+        (3.0, 0.0, 0.6)    # Space-only transformation
+    ]
+    
+    for (i, (x, t, β)) in enumerate(test_cases)
+        println("\n" * "="^50)
+        println("Test case $i:")
+        demonstrate_lorentz(x, t, β)
+    end
+end =#
