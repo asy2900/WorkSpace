@@ -91,22 +91,20 @@ function show_lorentz(x::Real, t::Real, β::Real)
     return nothing
 end
 
-
-#= Example usage
-function test_lorentz()
-    println("Testing Lorentz transformation with different scenarios:")
-    
-    # Test cases
-    test_cases = [
-        (2.0, 3.0, 0.5),   # Timelike interval
-        (4.0, 2.0, 0.3),   # Spacelike interval
-        (0.0, 5.0, 0.8),   # Time-only transformation
-        (3.0, 0.0, 0.6)    # Space-only transformation
+# 2-dimensional space and time case
+function lorentz_boost_2d(β::Number, θ::Number)
+  γ, α = lorentz_factor(β)
+  cos_θ, sin_θ = cos(θ), sin(θ)
+  γ_min_1 = γ -1
+  
+      [
+        1 + γ_min_1 * cos_θ^2    γ_min_1 * sin_θ * cos_θ   -γ * β * cos_θ / c;
+        γ_min_1 * sin_θ * cos_θ  1 + γ_min_1 * sin_θ^2    -γ * β * sin_θ / c;
+        -γ * β * cos_θ / c          -γ * β * sin_θ / c           γ
     ]
-    
-    for (i, (x, t, β)) in enumerate(test_cases)
-        println("\n" * "="^50)
-        println("Test case $i:")
-        demonstrate_lorentz(x, t, β)
-    end
-end =#
+
+end
+
+function lorentz_inverse_2d(β::Number, θ::Number)
+   lorentz_boost_2d(-β,θ)
+end
